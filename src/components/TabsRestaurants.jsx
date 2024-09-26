@@ -3,7 +3,8 @@ import { Restaurant } from "./Restaurant.jsx";
 import { useState } from 'react'
 
 export function TabsRestaurants() {
-	const [currIndex, setCurrIndex] = useState(0);
+	const startIndex = restaurants.findIndex(((restaurantItem) => restaurantItem.name)); // на случай если ресторан с индексом 0 будет без имени, т.е. невалидный. Иначе, если далить имя у первого ресторана, то первый рендер будет баганый (будет постой таб).
+	const [currIndex, setCurrIndex] = useState(startIndex);
 
 	return !!restaurants.length && (
 		<div className="restaurants-tabs">
