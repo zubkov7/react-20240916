@@ -2,13 +2,17 @@ import { useReducer } from "react";
 
 const DEFAULT_FORM_VALUE = {
   name: "",
-  address: "",
-  review: "",
+  text: "",
+  rating: 5,
 };
 
+const MAX_RATING_VALUE = 5;
+const MIN_RATING_VALUE = 1;
+
 const SET_NAME_ACTION_TYPE = "setName";
-const SET_ADDRESS_ACTION_TYPE = "setAddress";
-const SET_REVIEW_ACTION_TYPE = "setReview";
+const SET_TEXT_ACTION_TYPE = "setText";
+const INCREMENT_RATING_ACTION_TYPE = "incrementRating";
+const DECREMENT_RATING_ACTION_TYPE = "decrementRating";
 
 const reducer = (state, action) => {
   const { type, payload } = action;
@@ -19,16 +23,31 @@ const reducer = (state, action) => {
         ...DEFAULT_FORM_VALUE,
         name: payload,
       };
-    case SET_ADDRESS_ACTION_TYPE:
+    case SET_TEXT_ACTION_TYPE:
       return {
         ...state,
-        address: payload,
+        text: payload,
       };
-    case SET_REVIEW_ACTION_TYPE:
-      return {
-        ...state,
-        review: payload,
-      };
+    case INCREMENT_RATING_ACTION_TYPE: {
+      if (state.rating >= MAX_RATING_VALUE) {
+        return state;
+      } else {
+        return {
+          ...state,
+          rating: state.rating + 1,
+        };
+      }
+    }
+    case DECREMENT_RATING_ACTION_TYPE: {
+      if (state.rating <= MIN_RATING_VALUE) {
+        return state;
+      } else {
+        return {
+          ...state,
+          rating: state.rating - 1,
+        };
+      }
+    }
     default:
       return state;
   }
@@ -37,26 +56,31 @@ const reducer = (state, action) => {
 export const useForm = () => {
   const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
 
-  const { name, address, review } = form;
+  const { name, text, rating } = form;
 
   const setName = (value) => {
     dispatch({ type: SET_NAME_ACTION_TYPE, payload: value });
   };
 
-  const setAddress = (value) => {
-    dispatch({ type: SET_ADDRESS_ACTION_TYPE, payload: value });
+  const setText = (value) => {
+    dispatch({ type: SET_TEXT_ACTION_TYPE, payload: value });
   };
 
-  const setReview = (value) => {
-    dispatch({ type: SET_REVIEW_ACTION_TYPE, payload: value });
+  const incrementRating = (value) => {
+    dispatch({ type: INCREMENT_RATING_ACTION_TYPE, payload: value });
+  };
+
+  const decrementRating = (value) => {
+    dispatch({ type: DECREMENT_RATING_ACTION_TYPE, payload: value });
   };
 
   return {
     name,
-    address,
-    review,
+    text,
+    rating,
     setName,
-    setAddress,
-    setReview,
+    setText,
+    incrementRating,
+    decrementRating,
   };
 };

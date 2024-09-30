@@ -1,10 +1,19 @@
 import { useForm } from "./use-form";
+import { Counter } from "../counter/counter";
 
 export const ReviewForm = () => {
-  const { name, address, review, setAddress, setReview, setName } = useForm();
+  const {
+    name,
+    text,
+    rating,
+    setText,
+    setName,
+    incrementRating,
+    decrementRating,
+  } = useForm();
 
   return (
-    <form>
+    <form onSubmit={(event) => event.preventDefault()}>
       <div>
         <span>name</span>
         <input
@@ -16,19 +25,18 @@ export const ReviewForm = () => {
         />
       </div>
       <div>
-        <span>address</span>
-        <input
-          type='text'
-          value={address}
-          onChange={(event) => setAddress(event.target.value)}
-        />
-      </div>
-      <div>
         <span>review</span>
         <input
           type='text'
-          value={review}
-          onChange={(event) => setReview(event.target.value)}
+          value={text}
+          onChange={(event) => setText(event.target.value)}
+        />
+      </div>
+      <div>
+        <Counter
+          value={rating}
+          increment={incrementRating}
+          decrement={decrementRating}
         />
       </div>
     </form>

@@ -1,5 +1,5 @@
 import { Codecs } from "../codecs/codecs";
-import { Counter } from "../counter/counter";
+import { HeadphoneCounter } from "../headphone-counter/headphone-counter";
 import { ReviewForm } from "../review-form/review-form";
 import { Reviews } from "../reviews/reviews";
 
@@ -15,7 +15,7 @@ export const Headphone = ({ name, brand, reviews, codecs }) => {
       <div>{brand}</div>
       {reviews.length ? <Reviews reviews={reviews} /> : <div>empty review</div>}
       {codecs.length ? <Codecs codecs={codecs} /> : <div>empty codecs</div>}
-      <Counter />
+      <HeadphoneCounter />
       <h3>Review form</h3>
       <ReviewForm />
     </section>
