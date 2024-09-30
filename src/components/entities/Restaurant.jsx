@@ -1,16 +1,14 @@
 import { Menu } from "../widgets/MenuOfRestaurant.jsx";
 import { Reviews } from "../widgets/ReviewsOfRestaurant.jsx";
 
-export function Restaurant({ restaurantData }) {
-	// console.dir(restaurantData);
+export function Restaurant({ restaurantId, restaurantName, restaurantMenu, restaurantReviews }) {
 	return ( // здесь условый рендеринг (restaurantData.name &&) не нужен, т.к. сюда всегда будут попадать "restaurantData", у которых есть имя, т.к. проверка на имя ресторана ужеесть в заголовке таба.
-
-		<div className="restaurant-item" key={restaurantData.id}>
+		<div className="restaurant-item" key={restaurantId}>
 			<h2 className="restaurant-item__name">
-				{restaurantData.name}
+				{restaurantName}
 			</h2>
-			<Menu menuData={restaurantData.menu} />
-			<Reviews reviewsData={restaurantData.reviews} />
+			<Menu menuData={restaurantMenu} />
+			<Reviews reviewsData={restaurantReviews} />
 		</div>
 	)
 }

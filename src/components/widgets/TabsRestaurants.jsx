@@ -4,8 +4,10 @@ import { useState } from 'react'
 
 export function TabsRestaurants() {
 	const startRestaurantTab = restaurants.find((restaurantItem) => restaurantItem.name); // на случай если ресторан с индексом 0 будет без имени, т.е. невалидный. Иначе, если удалить имя у первого ресторана, то первый рендер будет баганый (будет пустой таб).
+
 	const startId = startRestaurantTab.id;
 	const [currId, setCurrId] = useState(startId);
+	const currRestaurantData = restaurants.find((restaurant) => restaurant.id === currId);
 
 	return !!restaurants.length && (
 		<div className="restaurants-tabs">
@@ -15,14 +17,19 @@ export function TabsRestaurants() {
 						<div
 							key={restaurant.id}
 							onClick={() => setCurrId(restaurant.id)}
-							className="restaurants-tabs__title"
+							className={currId == restaurant.id ? "restaurants-tabs__title activeTab" : "restaurants-tabs__title"}
 						>{restaurant.name}</div>
 					))
 				}
 			</div>
 
 			<div className="restaurants-tabs__body">
-				<Restaurant restaurantData={restaurants.find((restaurant) => restaurant.id === currId)} />
+				<Restaurant
+					restaurantId={currRestaurantData.id}
+					restaurantName={currRestaurantData.name}
+					restaurantMenu={currRestaurantData.menu}
+					restaurantReviews={currRestaurantData.reviews}
+				/>
 			</div>
 		</div>
 	)
