@@ -1,5 +1,5 @@
-import { Header } from "./Header.jsx"
-import { Footer } from "./Footer.jsx"
+import { Header } from "../widgets/Header.jsx"
+import { Footer } from "../widgets/Footer.jsx"
 
 export function Layout({ children }) {
 	return (

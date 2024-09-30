@@ -7,7 +7,8 @@
 	<title>Vite + React</title>
 </head>
 <style>
-	html {
+	html,
+	.body {
 		height: 100%;
 	}
 
@@ -17,7 +18,7 @@
 		max-height: 100%;
 	}
 
-	.body {
+	#root {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
@@ -88,9 +89,9 @@
 	}
 </style>
 
-<body class="body" id="root">
-
+<body class="body">
+	<div id="root"></div>
+	<script type="module" src="/src/main.jsx"></script>
 </body>
-<script type="module" src="/src/main.jsx"></script>
 
 </html>

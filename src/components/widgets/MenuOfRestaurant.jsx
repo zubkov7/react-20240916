@@ -1,4 +1,4 @@
-import { Counter } from "./Counter.jsx";
+import { Counter } from "../shared/Counter.jsx";
 
 export function Menu({ menuData }) {
 	return !!menuData.length && (
@@ -7,9 +7,9 @@ export function Menu({ menuData }) {
 			<ul className="restaurant-menu__list">
 				{menuData.map(menuItem => (
 					<li
+						key={menuItem.id}
 						className="restaurant-menu__item"
 						data-price={menuItem.price}
-						data-id={menuItem.id}
 						data-ingredients={menuItem.ingredients}
 					>
 						{menuItem.name}

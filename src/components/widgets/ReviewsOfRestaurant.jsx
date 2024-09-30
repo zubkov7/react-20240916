@@ -5,9 +5,9 @@ export function Reviews({ reviewsData }) {
 			<ul className="restaurant-reviews__list">
 				{reviewsData.map(reviewsItem => (
 					<li
+						key={reviewsItem.id}
 						className="restaurant-reviews__item"
 						data-rating={reviewsItem.rating}
-						data-id={reviewsItem.id}
 						data-user={reviewsItem.user}
 					>{reviewsItem.text}</li>
 				))}
