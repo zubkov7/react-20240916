@@ -1,4 +1,4 @@
-import { Counter } from "../shared/Counter.jsx";
+import { CounterOfMenu } from "./CounterOfMenu.jsx";
 
 export function Menu({ menuData }) {
 	return !!menuData.length && (
@@ -7,13 +7,13 @@ export function Menu({ menuData }) {
 			<ul className="restaurant-menu__list">
 				{menuData.map(menuItem => (
 					<li
-						key={menuItem.id}
+						key={menuItem.id} // здесь не нужен ".key", т.к. "li" - это не компонент, но для красоты указал
 						className="restaurant-menu__item"
 						data-price={menuItem.price}
 						data-ingredients={menuItem.ingredients}
 					>
 						{menuItem.name}
-						<Counter />
+						<CounterOfMenu />
 					</li>
 				))}
 			</ul>
