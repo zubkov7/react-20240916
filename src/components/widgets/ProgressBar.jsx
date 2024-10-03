@@ -17,7 +17,7 @@ export function ProgressBar() {
 		return () => {
 			document.removeEventListener("scroll", handleScroll);
 		}
-	}, [window.scrollY]);
+	}, []);
 
 	return (
 		<div
