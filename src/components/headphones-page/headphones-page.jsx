@@ -50,27 +50,6 @@ export const HeadphonesPage = ({ title }) => {
             reviews={activeHeadphone.reviews}
             codecs={activeHeadphone.codecs}
           />
-          <Headphone
-            key={activeHeadphone.id}
-            name={activeHeadphone.name}
-            brand={activeHeadphone.brand}
-            reviews={activeHeadphone.reviews}
-            codecs={activeHeadphone.codecs}
-          />
-          <Headphone
-            key={activeHeadphone.id}
-            name={activeHeadphone.name}
-            brand={activeHeadphone.brand}
-            reviews={activeHeadphone.reviews}
-            codecs={activeHeadphone.codecs}
-          />
-          <Headphone
-            key={activeHeadphone.id}
-            name={activeHeadphone.name}
-            brand={activeHeadphone.brand}
-            reviews={activeHeadphone.reviews}
-            codecs={activeHeadphone.codecs}
-          />
         </>
       )}
     </div>
