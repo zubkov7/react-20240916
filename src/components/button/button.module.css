@@ -1,25 +1,21 @@
-.button {
-    height: 50px;
-    width: auto;
-    padding: 5px;
+.root {
+    padding: 10px;
 }
 
 .default {
-    font-size: 14px;
-    line-height: 20px;
-}
-
-.xl {
     font-size: 20px;
-    line-height: 26px;
 }
 
-.light {
-    color: black;
-    background-color: white;
+.big {
+    font-size: 30px;
 }
 
 .dark {
-    color: white;
     background-color: black;
+    color: white;
+}
+
+.light {
+    background-color: white;
+    color: black;
 }

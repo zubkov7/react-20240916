@@ -1,14 +1,7 @@
-.progressBar {
+.root {
     position: fixed;
     top: 0;
     left: 0;
-    height: 5px;
-}
-
-.default {
-    background-color: green;
-}
-
-.accent {
+    height: 10px;
     background-color: red;
 }

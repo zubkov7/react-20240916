@@ -1,15 +1,17 @@
+import { Cart } from "../cart/cart";
 import { Footer } from "../footer/footer";
 import { Header } from "../header/header";
 import { ProgressBar } from "../progress-bar/progress-bar";
-import { ToggleThemeButton } from "../toggle-theme-button/toggle-theme-button";
+import { ThemeButton } from "../theme-button/theme-button";
 
 export const Layout = ({ children }) => {
   return (
     <div>
-      <ProgressBar viewVariant='accent' />
-      <ToggleThemeButton />
+      <ProgressBar />
+      <ThemeButton />
       <Header />
       {children}
+      <Cart />
       <Footer />
     </div>
   );

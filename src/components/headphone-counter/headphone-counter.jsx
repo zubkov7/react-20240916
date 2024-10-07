@@ -1,19 +1,19 @@
-import { useEffect } from "react";
+import { useCount } from "./use-counter";
 import { Counter } from "../counter/counter";
-import { useCount } from "./use-count";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+  selectAmountById,
+} from "../../redux/ui/cart";
 
-export const HeadphoneCounter = () => {
-  const { value, callbacks } = useCount();
+export const HeadphoneCounter = ({ id }) => {
+  const amount = useSelector((state) => selectAmountById(state, id));
 
-  useEffect(() => {
-    callbacks.increment();
-  }, [callbacks]);
+  const dispatch = useDispatch();
 
-  return (
-    <Counter
-      value={value}
-      increment={callbacks.increment}
-      decrement={callbacks.decrement}
-    />
-  );
+  const increment = () => dispatch(addToCart(id));
+  const decrement = () => dispatch(removeFromCart(id));
+
+  return <Counter value={amount} increment={increment} decrement={decrement} />;
 };

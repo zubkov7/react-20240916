@@ -28,26 +28,10 @@ const reducer = (state, action) => {
         ...state,
         text: payload,
       };
-    case INCREMENT_RATING_ACTION_TYPE: {
-      if (state.rating >= MAX_RATING_VALUE) {
-        return state;
-      } else {
-        return {
-          ...state,
-          rating: state.rating + 1,
-        };
-      }
-    }
-    case DECREMENT_RATING_ACTION_TYPE: {
-      if (state.rating <= MIN_RATING_VALUE) {
-        return state;
-      } else {
-        return {
-          ...state,
-          rating: state.rating - 1,
-        };
-      }
-    }
+    case INCREMENT_RATING_ACTION_TYPE:
+      return { ...state, rating: Math.min(state.rating + 1, MAX_RATING_VALUE) };
+    case DECREMENT_RATING_ACTION_TYPE:
+      return { ...state, rating: Math.max(state.rating - 1, MIN_RATING_VALUE) };
     default:
       return state;
   }
