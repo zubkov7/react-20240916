@@ -3,14 +3,8 @@ import { HeadphoneCounter } from "../headphone-counter/headphone-counter";
 import { ReviewForm } from "../review-form/review-form";
 import { Reviews } from "../reviews/reviews";
 import { Codecs } from "../codecs/codecs";
-import { useSelector } from "react-redux";
-import { selectHeadphoneById } from "../../redux/entities/headphones";
 
-export const Headphone = ({ id }) => {
-  const headphone = useSelector((state) => selectHeadphoneById(state, id));
-
-  const { name, brand, reviews, codecs } = headphone || {};
-
+export const Headphone = ({ name, brand, reviews, codecs }) => {
   const { auth } = useAuth();
 
   if (!name) {

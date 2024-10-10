@@ -1,13 +1,28 @@
 import { useSelector } from "react-redux";
-import { Tab } from "../tab/tab";
 import { selectHeadphoneById } from "../../redux/entities/headphones";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Tab } from "../tab/tab";
 
-export const HeadphoneTab = ({ id, onClick, isActive }) => {
+export const HeadphoneTab = ({ id }) => {
   const headphone = useSelector((state) => selectHeadphoneById(state, id));
+
+  const navigate = useNavigate();
 
   if (!headphone) {
     return null;
   }
 
-  return <Tab title={headphone.name} onClick={onClick} isActive={isActive} />;
+  return (
+    <>
+      <NavLink
+        to={id}
+        className={({ isActive }) => isActive && "someClass"}
+        referrer='/'
+        target='_blank'
+      >
+        {headphone.name}
+      </NavLink>
+      <Tab title={headphone.name} onClick={() => navigate(id)} />;
+    </>
+  );
 };
