@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { normalizedHeadphones } from "../../constants/normalized-mock";
+import { normalizedHeadphones } from "../../../constants/normalized-mock";
 
 const initialState = {
   entities: normalizedHeadphones.reduce((acc, item) => {
@@ -7,17 +7,17 @@ const initialState = {
 
     return acc;
   }, {}),
-  ids: normalizedHeadphones.map(({ id }) => id),
+  ids: normalizedHeadphones.map((item) => item.id),
 };
 
 export const headphonesSlice = createSlice({
   name: "headphones",
   initialState,
   selectors: {
-    selectHeadphonesIds: (state) => state.ids,
     selectHeadphoneById: (state, id) => state.entities[id],
+    selectHeadphonesIds: (state) => state.ids,
   },
 });
 
-export const { selectHeadphonesIds, selectHeadphoneById } =
+export const { selectHeadphoneById, selectHeadphonesIds } =
   headphonesSlice.selectors;

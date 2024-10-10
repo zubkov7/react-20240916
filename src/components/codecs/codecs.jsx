@@ -1,10 +1,14 @@
-export const Codecs = ({ codecs }) => {
+import { Codec } from "../codec/codec";
+
+export const Codecs = ({ codecsIds }) => {
   return (
     <div>
       <h3>Codecs</h3>
       <ul>
-        {codecs?.map((codec) => (
-          <li>{codec}</li>
+        {codecsIds?.map((id) => (
+          <li>
+            <Codec id={id} />
+          </li>
         ))}
       </ul>
     </div>

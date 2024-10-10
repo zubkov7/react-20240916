@@ -4,7 +4,7 @@ import { ReviewForm } from "../review-form/review-form";
 import { Reviews } from "../reviews/reviews";
 import { Codecs } from "../codecs/codecs";
 import { useSelector } from "react-redux";
-import { selectHeadphoneById } from "../../redux/headphones";
+import { selectHeadphoneById } from "../../redux/entities/headphones";
 
 export const Headphone = ({ id }) => {
   const headphone = useSelector((state) => selectHeadphoneById(state, id));
@@ -22,8 +22,12 @@ export const Headphone = ({ id }) => {
       <h2>{name}</h2>
       <h3>Brand</h3>
       <div>{brand}</div>
-      {reviews.length ? <Reviews reviews={reviews} /> : <div>empty review</div>}
-      {codecs.length ? <Codecs codecs={codecs} /> : <div>empty codecs</div>}
+      {reviews.length ? (
+        <Reviews reviewsIds={reviews} />
+      ) : (
+        <div>empty review</div>
+      )}
+      {codecs.length ? <Codecs codecsIds={codecs} /> : <div>empty codecs</div>}
       {auth.isAuthorized && (
         <>
           <HeadphoneCounter id={id} />
