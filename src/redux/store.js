@@ -13,4 +13,5 @@ export const store = configureStore({
     [codecsSlice.name]: codecsSlice.reducer,
     [cartSlice.name]: cartSlice.reducer,
   },
+  // middleware: (getDefaultMiddlewares) => getDefaultMiddlewares().concat(logger),
 });

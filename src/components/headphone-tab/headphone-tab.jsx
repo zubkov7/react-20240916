@@ -3,6 +3,9 @@ import { selectHeadphoneById } from "../../redux/entities/headphones";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Tab } from "../tab/tab";
 
+import styles from "./headphone-tab.module.css";
+import classNames from "classnames";
+
 export const HeadphoneTab = ({ id }) => {
   const headphone = useSelector((state) => selectHeadphoneById(state, id));
 
@@ -16,7 +19,7 @@ export const HeadphoneTab = ({ id }) => {
     <>
       <NavLink
         to={id}
-        className={({ isActive }) => isActive && "someClass"}
+        className={({ isActive }) => classNames(isActive && styles.activeLink)}
         referrer='/'
         target='_blank'
       >

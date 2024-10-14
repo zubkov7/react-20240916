@@ -9,6 +9,7 @@ import { store } from "./redux/store";
 import {
   createBrowserRouter,
   Navigate,
+  replace,
   RouterProvider,
 } from "react-router-dom";
 import { HeadphonePage } from "./components/headphone-page/headphone-page";
