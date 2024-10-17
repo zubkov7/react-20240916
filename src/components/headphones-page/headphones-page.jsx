@@ -1,34 +1,30 @@
-import { useDispatch, useSelector } from "react-redux";
 import { HeadphoneTab } from "../headphone-tab/headphone-tab";
-import {
-  selectHeadphonesIds,
-  selectHeadphonesRequestStatus,
-} from "../../redux/entities/headphones";
-import { Outlet, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { getHeadphones } from "../../redux/entities/headphones/get-headphones";
+import { Outlet } from "react-router-dom";
+import { useGetHeadphonesQuery } from "../../redux/services/api/api";
 
 export const HeadphonesPage = ({ title }) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { data, isLoading, isError } = useGetHeadphonesQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
 
-  useEffect(() => {
-    dispatch(getHeadphones({ onError: () => navigate({ to: "/about" }) }));
-  }, [dispatch, navigate]);
-
-  const headphonesIds = useSelector(selectHeadphonesIds);
-  const requestStatus = useSelector(selectHeadphonesRequestStatus);
-
-  if (requestStatus === "idle" || requestStatus === "pending") {
+  if (isLoading) {
     return "loading";
+  }
+
+  if (isError) {
+    return "error";
+  }
+
+  if (!data?.length) {
+    return null;
   }
 
   return (
     <div>
       <h1>{title}</h1>
 
-      {headphonesIds.map((id) => (
-        <HeadphoneTab key={id} id={id} />
+      {data.map(({ name, id }) => (
+        <HeadphoneTab key={id} id={id} name={name} />
       ))}
 
       <Outlet />

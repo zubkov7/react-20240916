@@ -4,7 +4,7 @@ import { ReviewForm } from "../review-form/review-form";
 import { Reviews } from "../reviews/reviews";
 import { Codecs } from "../codecs/codecs";
 
-export const Headphone = ({ name, brand, reviews, codecs }) => {
+export const Headphone = ({ name, brand, codecs, id }) => {
   const { auth } = useAuth();
 
   if (!name) {
@@ -16,17 +16,13 @@ export const Headphone = ({ name, brand, reviews, codecs }) => {
       <h2>{name}</h2>
       <h3>Brand</h3>
       <div>{brand}</div>
-      {reviews.length ? (
-        <Reviews reviewsIds={reviews} />
-      ) : (
-        <div>empty review</div>
-      )}
+      <Reviews headphoneId={id} />
       {codecs.length ? <Codecs codecsIds={codecs} /> : <div>empty codecs</div>}
       {auth.isAuthorized && (
         <>
           <HeadphoneCounter id={id} />
           <h3>Rating form</h3>
-          <ReviewForm />
+          <ReviewForm headphoneId={id} />
         </>
       )}
     </section>

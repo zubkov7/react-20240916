@@ -1,7 +1,8 @@
 import { useForm } from "./use-form";
 import { Counter } from "../counter/counter";
+import { useAddReviewMutation } from "../../redux/services/api/api";
 
-export const ReviewForm = () => {
+export const ReviewForm = ({ headphoneId }) => {
   const {
     name,
     text,
@@ -11,6 +12,8 @@ export const ReviewForm = () => {
     incrementRating,
     decrementRating,
   } = useForm();
+
+  const [addReview] = useAddReviewMutation();
 
   return (
     <form onSubmit={(event) => event.preventDefault()}>
@@ -39,6 +42,20 @@ export const ReviewForm = () => {
           decrement={decrementRating}
         />
       </div>
+      <button
+        onClick={() =>
+          addReview({
+            headphoneId,
+            review: {
+              user: "jg4985gj94",
+              text,
+              rating: 5,
+            },
+          })
+        }
+      >
+        submit
+      </button>
     </form>
   );
 };
