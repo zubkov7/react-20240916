@@ -1,8 +1,10 @@
-import { useNavigate } from "react-router-dom";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Tab } from "../tab/tab";
 
 export const HeadphoneTab = ({ id, name }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
-  return <Tab title={name} onClick={() => navigate(id)} />;
+  return <Tab title={name} onClick={() => router.push(`/headphone/${id}`)} />;
 };

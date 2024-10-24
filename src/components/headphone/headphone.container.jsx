@@ -1,3 +1,5 @@
+"use client";
+
 import { Headphone } from "./headphone";
 import { useGetHeadphoneByIdQuery } from "../../redux/services/api/api";
 

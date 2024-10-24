@@ -1,3 +1,5 @@
+"use client";
+
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../../redux/ui/cart";
 import { CartItem } from "../cart-item/cart-item";

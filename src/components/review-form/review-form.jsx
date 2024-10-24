@@ -1,3 +1,5 @@
+"use client";
+
 import { useForm } from "./use-form";
 import { Counter } from "../counter/counter";
 import { useAddReviewMutation } from "../../redux/services/api/api";

@@ -1,13 +1,17 @@
 export const metadata = {
-  title: "Vite + React",
-  description: "description",
+  title: "React course",
+  description: "learn-js react",
 };
+
+import { App } from "../app";
 
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body>
-        <div id='root'>root layout - {children}</div>
+        <div id='root'>
+          <App>{children}</App>
+        </div>
       </body>
     </html>
   );

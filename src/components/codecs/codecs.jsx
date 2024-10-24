@@ -6,7 +6,7 @@ export const Codecs = ({ codecsIds }) => {
       <h3>Codecs</h3>
       <ul>
         {codecsIds?.map((id) => (
-          <li>
+          <li key={id}>
             <Codec id={id} />
           </li>
         ))}

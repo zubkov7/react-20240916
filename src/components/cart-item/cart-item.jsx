@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux";
-import { selectHeadphoneById } from "../../redux/entities/headphones";
+import { useGetHeadphoneByIdQuery } from "../../redux/services/api/api";
 import { HeadphoneCounter } from "../headphone-counter/headphone-counter";
 
 export const CartItem = ({ id, amount }) => {
-  const { name } = useSelector((state) => selectHeadphoneById(state, id)) || {};
+  const { data } = useGetHeadphoneByIdQuery(id);
+
+  const { name } = data || {};
 
   if (!name) {
     return null;

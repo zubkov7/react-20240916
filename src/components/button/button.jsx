@@ -1,3 +1,5 @@
+"use client";
+
 import classNames from "classnames";
 import styles from "./button.module.css";
 import { useTheme } from "../theme-context/use-theme";

@@ -1,4 +1,3 @@
-import { useCount } from "./use-counter";
 import { Counter } from "../counter/counter";
 import { useDispatch, useSelector } from "react-redux";
 import {
